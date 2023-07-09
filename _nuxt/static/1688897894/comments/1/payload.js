@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/comments/1", (function(a){return {data:[{}],fetch:{"0":{comment:{postId:a,id:a,name:"id labore ex et quam laborum",email:"Eliseo@gardner.biz",body:"laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"}}},mutations:void 0}}(1)));
