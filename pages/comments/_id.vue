@@ -8,20 +8,16 @@
 
 <script>
 export default {
+  async asyncData({$axios, params}) {
+    const id = params.id
+    const comment = await $axios.$get(`/comments/${id}`);
+
+    return {comment};
+  },
   data() {
     return {
       comment: {}
     }
   },
-  async mounted() {
-    const { id } = this.$route.params;
-    try {
-      const response = await this.$axios.get(`/comments/${id}`);
-      this.comment = response.data;
-    } catch (error) {
-      console.error(error);
-      this.comment = {};
-    }
-  }
 }
 </script>

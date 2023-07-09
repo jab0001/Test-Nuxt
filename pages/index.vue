@@ -10,9 +10,9 @@
       </thead>
       <tbody>
         <tr
-          v-for="comment in paginatedComments"
+          v-for="comment in resultedComments"
           :key="comment.id"
-          @click="goToComment(comment.id)"
+          @click.prevent="goToComment(comment.id)"
         >
           <td>{{ comment.id }}</td>
           <td>{{ comment.name }}</td>
@@ -31,37 +31,38 @@
 
 <script>
 export default {
+  async fetch({ store }) {
+    if (store.getters["comments/comments"].length === 0) {
+      await store.dispatch("comments/fetch");
+    }
+  },
   data() {
     return {
-      comments: [],
+      /* comments: [], */
       page: 1,
       perPage: 10,
       sortByColumn: "id",
       sortDirection: "asc",
+      resultedComments: []
     };
   },
   computed: {
+    comments() {
+      const start = (this.page - 1) * this.perPage;
+      const end = start + this.perPage;
+      this.resultedComments = this.$store.getters['comments/comments'].slice(start, end);
+      return this.$store.getters['comments/comments'];
+    },
     totalPages() {
       return Math.ceil(this.comments.length / this.perPage);
     },
-    paginatedComments() {
+    /* paginatedComments() {
       const start = (this.page - 1) * this.perPage;
       const end = start + this.perPage;
-      return this.comments.slice(start, end);
-    },
-  },
-  mounted() {
-    this.getComments();
+      return this.resultedComments = this.comments.slice(start, end);
+    }, */
   },
   methods: {
-    async getComments() {
-      try {
-        const response = await this.$axios.get("/comments");
-        this.comments = response.data;
-      } catch (error) {
-        console.error(error);
-      }
-    },
     sortBy(column) {
       if (column === this.sortByColumn) {
         this.sortDirection = this.sortDirection === "asc" ? "desc" : "asc";
@@ -70,7 +71,7 @@ export default {
         this.sortDirection = "asc";
       }
 
-      const sortedComments = [...this.paginatedComments].sort((a, b) => {
+      const sortedComments = this.resultedComments.sort((a, b) => {
         const valueA = a[column];
         const valueB = b[column];
 
@@ -84,14 +85,6 @@ export default {
 
         return 0;
       });
-
-      const start = (this.page - 1) * this.perPage;
-      const end = start + this.perPage;
-      this.comments.splice(
-        start,
-        this.perPage,
-        ...sortedComments.slice(0, this.perPage)
-      );
     },
     nextPage() {
       if (this.page < this.totalPages) {
