@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/comments/8", {data:[{}],fetch:{"0":{comment:{postId:2,id:8,name:"et omnis dolorem",email:"Mallory_Kunze@marie.org",body:"ut voluptatem corrupti velit\nad voluptatem maiores\net nisi velit vero accusamus maiores\nvoluptates quia aliquid ullam eaque"}}},mutations:void 0});
