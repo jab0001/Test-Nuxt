@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/", {data:[{}],fetch:{"0":{comments:[],page:1,perPage:10,sortByColumn:"id",sortDirection:"asc"}},mutations:void 0});
