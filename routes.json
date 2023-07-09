@@ -1,0 +1,14 @@
+[
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/pavellotonin/Desktop/nuxt/Test-Nuxt/pages/index.vue",
+    "chunkName": "pages/index"
+  },
+  {
+    "name": "comments-id",
+    "path": "/comments/:id?",
+    "component": "/Users/pavellotonin/Desktop/nuxt/Test-Nuxt/pages/comments/_id.vue",
+    "chunkName": "pages/comments/_id"
+  }
+]
