@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/comments/7", {data:[{}],fetch:{"0":{comment:{postId:2,id:7,name:"repellat consequatur praesentium vel minus molestias voluptatum",email:"Dallas@ole.me",body:"maiores sed dolores similique labore et inventore et\nquasi temporibus esse sunt id et\neos voluptatem aliquam\naliquid ratione corporis molestiae mollitia quia et magnam dolor"}}},mutations:void 0});
